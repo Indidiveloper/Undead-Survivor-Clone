@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if (!isLive)
@@ -33,5 +33,10 @@ public class Enemy : MonoBehaviour
     void LateUpdate()
     {
         spriter.flipX = target.position.x < rigid.position.x;
+    }
+
+    void OnEnable()
+    {
+        target = GameManager.Instance.player.GetComponent<Rigidbody2D>();
     }
 }
