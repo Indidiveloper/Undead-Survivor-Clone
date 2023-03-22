@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
     void OnEnable()
     {
-        target = GameManager.Instance.player.GetComponent<Rigidbody2D>();
+        target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
         health = maxHealth;
     }
