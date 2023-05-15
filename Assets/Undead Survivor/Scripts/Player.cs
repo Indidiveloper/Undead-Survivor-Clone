@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -35,8 +36,8 @@ public class Player : MonoBehaviour
         if (!GameManager.instance.isLive)
             return;
 
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
+        // inputVec.x = Input.GetAxisRaw("Horizontal");
+        // inputVec.y = Input.GetAxisRaw("Vertical");
     }
 
     void FixedUpdate()
@@ -78,5 +79,10 @@ public class Player : MonoBehaviour
             anim.SetTrigger("Dead");
             GameManager.instance.GameOver();
         }
+    }
+
+    void OnMove(InputValue value)
+    {
+        inputVec = value.Get<Vector2>();
     }
 }
